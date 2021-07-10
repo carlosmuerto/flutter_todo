@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_todo/domain/auth/value_objects.dart';
 
 void main() {
+  //final email = EmailAdress("aaa");
+  //print(email);
   runApp(MyApp());
 }
 
@@ -17,7 +20,10 @@ class MyApp extends StatelessWidget {
         ),
         body: Container(
           alignment: Alignment.center,
-          child: Text("HELLO WORLD"),
+          child: TextButton(
+            onPressed: () {},
+            child: Text("RUN"),
+          ),
         ),
       ),
     );
