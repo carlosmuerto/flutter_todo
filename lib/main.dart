@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_todo/domain/auth/value_objects.dart';
 
 void main() {
   //final email = EmailAdress("aaa");
   //print(email);
+  // ignore: prefer_const_constructors
   runApp(MyApp());
 }
 
@@ -16,13 +16,13 @@ class MyApp extends StatelessWidget {
       title: "Material App",
       home: Scaffold(
         appBar: AppBar(
-          title: Text("Materal App Appbar"),
+          title: const Text("Materal App Appbar"),
         ),
         body: Container(
           alignment: Alignment.center,
           child: TextButton(
             onPressed: () {},
-            child: Text("RUN"),
+            child: const Text("RUN"),
           ),
         ),
       ),
