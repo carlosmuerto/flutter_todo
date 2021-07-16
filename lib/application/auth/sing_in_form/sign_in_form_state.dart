@@ -6,6 +6,7 @@ abstract class SignInFormState with _$SignInFormState {
     required EmailAddress emailAddress,
     required Password password,
     required bool isSubmitting,
+    required bool showErrors,
     required Option<Either<AuthFailure, Unit>> authFailureOrSuccessOption,
   }) = _SignInFormState;
 
@@ -13,6 +14,7 @@ abstract class SignInFormState with _$SignInFormState {
         emailAddress: EmailAddress(""),
         password: Password(""),
         isSubmitting: false,
+        showErrors: false,
         authFailureOrSuccessOption: none(),
       );
 }

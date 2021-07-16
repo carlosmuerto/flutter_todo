@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_todo/injection.dart';
+import 'package:injectable/injectable.dart';
 
 void main() {
   //final email = EmailAdress("aaa");
   //print(email);
   // ignore: prefer_const_constructors
-  runApp(MyApp());
+  configureIngection(Environment.prod);
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
