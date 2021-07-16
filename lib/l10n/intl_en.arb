@@ -1,0 +1,14 @@
+{
+	"email": "Email",
+	"passwaord": "Password",
+	"singIn": "Sign in",
+	"singInWithGoogle": "Sign in with Google",
+	"register": "Register",
+	"invalidEmail": "invalid Email enter",
+	"shortPassword": "too short Password",
+	"cancelByUser": "Canceled by the user",
+	"serverError": "Some happend in the Server",
+	"emailAlreadyInUse": "this Email is already in user",
+	"invalidInputs": "some imput are invalid",
+	"todo": "To do"
+}

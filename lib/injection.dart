@@ -6,6 +6,6 @@ import 'injection.config.dart';
 final getIt = GetIt.instance;
 
 @injectableInit
-void configureIngection(String env) {
+void configureInjection(String env) {
   $initGetIt(getIt, environment: env);
 }
