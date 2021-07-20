@@ -7,7 +7,7 @@ abstract class SignInFormState with _$SignInFormState {
     required Password password,
     required bool isSubmitting,
     required bool showErrors,
-    required Option<Either<AuthFailure, Unit>> authFailureOrSuccessOption,
+    required Option<AuthFailure> authFailureOrSuccessOption,
   }) = _SignInFormState;
 
   factory SignInFormState.initial() => _SignInFormState(

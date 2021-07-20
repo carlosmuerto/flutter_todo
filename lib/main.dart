@@ -11,6 +11,6 @@ void main() {
   // new Firebase call
   Firebase.initializeApp().then((_) {
     configureInjection(Environment.prod);
-    runApp(const AppWidget());
+    runApp(AppWidget());
   });
 }

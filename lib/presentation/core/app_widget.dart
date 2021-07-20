@@ -1,32 +1,45 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_todo/application/auth/auth_bloc.dart';
+import 'package:flutter_todo/injection.dart';
+import 'package:flutter_todo/presentation/routes/router.gr.dart';
 
 import '../../generated/l10n.dart';
-import '../sign_in/sing_in_page.dart';
 
 class AppWidget extends StatelessWidget {
-  const AppWidget({Key? key}) : super(key: key);
+  final _appRouter = AppRouter();
+  AppWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: "Notes",
-      localizationsDelegates: const [
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-        S.delegate,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) =>
+              getIt<AuthBloc>()..add(const AuthEvent.authCheckRequested()),
+        )
       ],
-      theme: ThemeData.light().copyWith(
-          primaryColor: Colors.green[800],
-          accentColor: Colors.blueAccent,
-          inputDecorationTheme: InputDecorationTheme(
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(8),
-            ),
-          )),
-      supportedLocales: S.delegate.supportedLocales,
-      home: const SignInPage(),
+      child: MaterialApp.router(
+        title: "Notes",
+        localizationsDelegates: const [
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+          S.delegate,
+        ],
+        theme: ThemeData.light().copyWith(
+            primaryColor: Colors.green[800],
+            accentColor: Colors.blueAccent,
+            inputDecorationTheme: InputDecorationTheme(
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(8),
+              ),
+            )),
+        supportedLocales: S.delegate.supportedLocales,
+        routerDelegate: _appRouter.delegate(),
+        routeInformationParser: _appRouter.defaultRouteParser(),
+      ),
     );
   }
 }

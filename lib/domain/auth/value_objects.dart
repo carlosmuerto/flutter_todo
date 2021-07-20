@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:uuid/uuid.dart';
 
 import '../core/failures.dart';
 import '../core/value_objects.dart';
@@ -28,4 +29,19 @@ class Password extends ValueObject<String> {
   }
 
   const Password._(this.value);
+}
+
+class UniqueId extends ValueObject<String> {
+  @override
+  final Either<ValueFailure<String>, String> value;
+
+  factory UniqueId.create() {
+    return UniqueId._(right(const Uuid().v1()));
+  }
+
+  factory UniqueId.fromString(String uniqueId) {
+    return UniqueId._(right(uniqueId));
+  }
+
+  const UniqueId._(this.value);
 }

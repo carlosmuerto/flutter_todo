@@ -14,19 +14,16 @@ class SignInForm extends StatelessWidget {
       listener: (context, state) {
         state.authFailureOrSuccessOption.fold(
           () {},
-          (either) => either.fold(
-            (f) {
-              FlushbarHelper.createError(
-                message: f.map(
-                  cancelByUser: (_) => S.of(context).cancelByUser,
-                  serverError: (_) => S.of(context).serverError,
-                  emailAlreadyInUse: (_) => S.of(context).emailAlreadyInUse,
-                  invalidInputs: (_) => S.of(context).invalidInputs,
-                ),
-              ).show(context);
-            },
-            (_) {},
-          ),
+          (f) {
+            FlushbarHelper.createError(
+              message: f.map(
+                cancelByUser: (_) => S.of(context).cancelByUser,
+                serverError: (_) => S.of(context).serverError,
+                emailAlreadyInUse: (_) => S.of(context).emailAlreadyInUse,
+                invalidInputs: (_) => S.of(context).invalidInputs,
+              ),
+            ).show(context);
+          },
         );
       },
       builder: (context, state) {
@@ -35,12 +32,14 @@ class SignInForm extends StatelessWidget {
               ? AutovalidateMode.always
               : AutovalidateMode.disabled,
           child: ListView(
+            padding: const EdgeInsets.all(8),
             children: [
               Container(
                 alignment: Alignment.center,
-                child: Text(
-                  S.of(context).todo,
-                  style: const TextStyle(fontSize: 32),
+                child: const Icon(
+                  Icons.note_alt,
+                  size: 120,
+                  color: Colors.lightBlue,
                 ),
               ),
               Container(
@@ -125,6 +124,12 @@ class SignInForm extends StatelessWidget {
                   style: const TextStyle(fontWeight: FontWeight.bold),
                 ),
               ),
+              if (state.isSubmitting) ...[
+                Container(
+                  padding: const EdgeInsets.only(top: 8),
+                  child: const LinearProgressIndicator(),
+                )
+              ]
             ],
           ),
         );

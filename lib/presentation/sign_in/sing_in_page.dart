@@ -15,7 +15,7 @@ class SignInPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(S.of(context).todo),
+        title: Text(S.of(context).singIn),
       ),
       body: BlocProvider<SignInFormBloc>(
         create: (context) => getIt<SignInFormBloc>(),

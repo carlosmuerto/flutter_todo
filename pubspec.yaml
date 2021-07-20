@@ -12,11 +12,12 @@ dependencies:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
+  another_flushbar: ^1.10.24
+  auto_route: ^2.2.0
   cupertino_icons: ^1.0.2
   dartz: ^0.10.0-nullsafety.2
   firebase_auth: ^3.0.0
   firebase_core: ^1.4.0
-  another_flushbar: ^1.10.24
   flutter_bloc: ^7.0.1
   freezed_annotation: null
   get_it: ^7.2.0
@@ -24,10 +25,12 @@ dependencies:
   injectable: ^1.4.1
   json_annotation: ^4.0.1
   meta: null
+  uuid: ^3.0.4
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  auto_route_generator: ^2.1.0
   build_runner: null
   freezed: ^0.14.2
   injectable_generator: ^1.4.1
