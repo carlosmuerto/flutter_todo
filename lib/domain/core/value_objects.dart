@@ -7,9 +7,14 @@ import 'failures.dart';
 @immutable
 abstract class ValueObject<T> {
   const ValueObject();
-  Either<ValueFailure<T>, T> get value;
+  Either<ValueFailure, T> get value;
 
   bool get isValid => value.isRight();
+
+  Option<ValueFailure> get failureOption => value.fold(
+        (f) => some(f),
+        (_) => none(),
+      );
 
   /// Throws [UnexpectedValueError] containing the [ValueFailure]
   T getOrCrash() => value.fold((f) => throw UnexpectedValueError(f), id);

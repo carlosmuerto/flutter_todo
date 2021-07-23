@@ -5,6 +5,8 @@ analyzer:
     must_be_immutable: error
   exclude:
     - lib/generated/**
+    - lib/**/*.freezed.dart
+    - lib/**/*.g.dart
     
 linter:
   rules:

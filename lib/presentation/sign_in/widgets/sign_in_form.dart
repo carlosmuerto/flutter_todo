@@ -34,12 +34,10 @@ class SignInForm extends StatelessWidget {
           child: ListView(
             padding: const EdgeInsets.all(8),
             children: [
-              Container(
-                alignment: Alignment.center,
-                child: const Icon(
-                  Icons.note_alt,
-                  size: 120,
-                  color: Colors.lightBlue,
+              const FractionallySizedBox(
+                widthFactor: 0.3,
+                child: Image(
+                  image: AssetImage('assets/to-do-list.png'),
                 ),
               ),
               Container(
