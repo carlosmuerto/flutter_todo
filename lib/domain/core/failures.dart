@@ -14,8 +14,7 @@ abstract class MultValueFailure<T> with _$MultValueFailure<T> {
 */
 
 @freezed
-abstract class AuthValueFailure<T> extends ValueFailure
-    with _$AuthValueFailure<T> {
+class AuthValueFailure<T> extends ValueFailure with _$AuthValueFailure<T> {
   const factory AuthValueFailure.invalidEmail({
     required T failedValue,
   }) = _InvalidEmail<T>;
@@ -25,8 +24,7 @@ abstract class AuthValueFailure<T> extends ValueFailure
 }
 
 @freezed
-abstract class NotesValueFailure<T> extends ValueFailure
-    with _$NotesValueFailure<T> {
+class NotesValueFailure<T> extends ValueFailure with _$NotesValueFailure<T> {
   const factory NotesValueFailure.exceeddingLength({
     required T failedValue,
     required int max,

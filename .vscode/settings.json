@@ -1,4 +1,14 @@
 {
 	"editor.insertSpaces": false,
-	"editor.tabSize": 2
+	"editor.tabSize": 2,
+	"files.exclude": {
+		"**/.git": true,
+		"**/.svn": true,
+		"**/.hg": true,
+		"**/CVS": true,
+		"**/.DS_Store": true,
+		"**/*.freezed.dart": true,
+		"**/*.g.dart": true
+	},
+	"explorerExclude.backup": null
 }

@@ -35,13 +35,9 @@ class UniqueId extends ValueObject<String> {
   @override
   final Either<AuthValueFailure<String>, String> value;
 
-  factory UniqueId.create() {
-    return UniqueId._(right(const Uuid().v1()));
-  }
+  factory UniqueId.create() => UniqueId._(right(const Uuid().v1()));
 
-  factory UniqueId.fromString(String uniqueId) {
-    return UniqueId._(right(uniqueId));
-  }
+  factory UniqueId.fromString(String uniqueId) => UniqueId._(right(uniqueId));
 
   const UniqueId._(this.value);
 }

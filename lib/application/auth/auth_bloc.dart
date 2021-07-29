@@ -32,13 +32,13 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   Stream<AuthState> _authCheckRequested(_AuthCheckRequested e) async* {
     final userOption = await _authFacade.getSignedInUser();
     yield userOption.fold(
-      () => const _Unauthenticaed(),
-      (u) => _Authenticaed(u),
+      () => const _Unauthenticated(),
+      (u) => _Authenticated(u),
     );
   }
 
   Stream<AuthState> _signedOut(_SignedOut e) async* {
     await _authFacade.signOut();
-    yield const _Unauthenticaed();
+    yield const _Unauthenticated();
   }
 }

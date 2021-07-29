@@ -2,7 +2,7 @@ import 'dart:ui';
 
 import 'package:dartz/dartz.dart';
 import 'package:flutter_todo/domain/core/value_validators.dart';
-import 'package:kt_dart/kt.dart';
+import 'package:kt_dart/collection.dart';
 
 import '../core/failures.dart';
 import '../core/value_objects.dart';
@@ -75,6 +75,8 @@ class FixedList<T> extends ValueObject<KtList<T>> {
   int get length => value.getOrElse(() => emptyList()).size;
 
   bool get isfull => length == maxLength;
+
+  bool get isEmpty => value.getOrElse(() => emptyList()).isEmpty();
 
   @override
   final Either<NotesValueFailure<KtList<T>>, KtList<T>> value;

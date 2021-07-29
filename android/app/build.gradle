@@ -35,18 +35,27 @@ android {
 
     defaultConfig {
         applicationId "com.example.flutter_todo_36bUdLJeWsbmPAvv"
-        minSdkVersion 16
+        minSdkVersion 21
         targetSdkVersion 30
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
     }
 
     buildTypes {
+			/*
         release {
             // TODO: Add your own signing config for the release build.
             // Signing with the debug keys for now, so `flutter run --release` works.
             signingConfig signingConfigs.debug
         }
+				*/
+				debug {
+        minifyEnabled true
+
+        // TODO: Add your own signing config for the release build.
+        // Signing with the debug keys for now, so `flutter run --release` works.
+        signingConfig signingConfigs.debug
+    }
     }
 }
 

@@ -160,11 +160,151 @@ class S {
     );
   }
 
+  /// `Unexpected Error`
+  String get unexpected {
+    return Intl.message(
+      'Unexpected Error',
+      name: 'unexpected',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `please restart the App`
+  String get pleaseRestart {
+    return Intl.message(
+      'please restart the App',
+      name: 'pleaseRestart',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `unable to update try later`
+  String get unableToUpdate {
+    return Intl.message(
+      'unable to update try later',
+      name: 'unableToUpdate',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `permission denied`
+  String get permissionDenied {
+    return Intl.message(
+      'permission denied',
+      name: 'permissionDenied',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `IMPOSIBLE ERROR:`
+  String get imposibleError {
+    return Intl.message(
+      'IMPOSIBLE ERROR:',
+      name: 'imposibleError',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `To do`
   String get todo {
     return Intl.message(
       'To do',
       name: 'todo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `I Need Help`
+  String get iNeedHelp {
+    return Intl.message(
+      'I Need Help',
+      name: 'iNeedHelp',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `'s notes`
+  String get notesOf {
+    return Intl.message(
+      '\'s notes',
+      name: 'notesOf',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cancel`
+  String get cancel {
+    return Intl.message(
+      'Cancel',
+      name: 'cancel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delete`
+  String get delete {
+    return Intl.message(
+      'Delete',
+      name: 'delete',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Invalid note`
+  String get invalidNote {
+    return Intl.message(
+      'Invalid note',
+      name: 'invalidNote',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `details for Nerds`
+  String get detailsForNerds {
+    return Intl.message(
+      'details for Nerds',
+      name: 'detailsForNerds',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Pelase contact tecnical support`
+  String get pelaseContactSupport {
+    return Intl.message(
+      'Pelase contact tecnical support',
+      name: 'pelaseContactSupport',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Selected Note:`
+  String get selectedNote {
+    return Intl.message(
+      'Selected Note:',
+      name: 'selectedNote',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `UNRECOVERABLE ERROR`
+  String get unrecoverableError {
+    return Intl.message(
+      'UNRECOVERABLE ERROR',
+      name: 'unrecoverableError',
       desc: '',
       args: [],
     );

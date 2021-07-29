@@ -1,4 +1,5 @@
 {
+	"@@locale": "en",
 	"email": "Email",
 	"passwaord": "Password",
 	"singIn": "Sign in",
@@ -10,5 +11,19 @@
 	"serverError": "Some happend in the Server",
 	"emailAlreadyInUse": "this Email is already in user",
 	"invalidInputs": "some imput are invalid",
-	"todo": "To do"
+	"unexpected": "Unexpected Error",
+	"pleaseRestart": "please restart the App",
+	"unableToUpdate": "unable to update try later",
+	"permissionDenied": "permission denied",
+	"imposibleError": "IMPOSIBLE ERROR:",
+	"todo": "To do",
+	"iNeedHelp": "I Need Help",
+	"notesOf": "'s notes",
+	"cancel": "Cancel",
+	"delete": "Delete",
+	"invalidNote": "Invalid note",
+	"detailsForNerds": "details for Nerds",
+	"pelaseContactSupport": "Pelase contact tecnical support",
+	"selectedNote": "Selected Note:",
+	"unrecoverableError": "UNRECOVERABLE ERROR"
 }

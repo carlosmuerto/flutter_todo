@@ -1,9 +1,12 @@
 import 'package:another_flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:auto_route/auto_route.dart';
+import 'package:flutter_todo/application/auth/auth_bloc.dart';
 
 import '../../../application/auth/sing_in_form/sign_in_form_bloc.dart';
 import '../../../generated/l10n.dart';
+import '../../routes/router.gr.dart';
 
 class SignInForm extends StatelessWidget {
   const SignInForm({Key? key}) : super(key: key);
@@ -13,17 +16,20 @@ class SignInForm extends StatelessWidget {
     return BlocConsumer<SignInFormBloc, SignInFormState>(
       listener: (context, state) {
         state.authFailureOrSuccessOption.fold(
-          () {},
-          (f) {
-            FlushbarHelper.createError(
-              message: f.map(
-                cancelByUser: (_) => S.of(context).cancelByUser,
-                serverError: (_) => S.of(context).serverError,
-                emailAlreadyInUse: (_) => S.of(context).emailAlreadyInUse,
-                invalidInputs: (_) => S.of(context).invalidInputs,
-              ),
-            ).show(context);
+          () {
+            context.read<AuthBloc>().add(const AuthEvent.authCheckRequested());
+            if (!state.isSubmitting) {
+              context.router.replace(const NotesOverviewRoute());
+            }
           },
+          (f) => FlushbarHelper.createError(
+            message: f.map(
+              cancelByUser: (_) => S.of(context).cancelByUser,
+              serverError: (_) => S.of(context).serverError,
+              emailAlreadyInUse: (_) => S.of(context).emailAlreadyInUse,
+              invalidInputs: (_) => S.of(context).invalidInputs,
+            ),
+          ).show(context),
         );
       },
       builder: (context, state) {

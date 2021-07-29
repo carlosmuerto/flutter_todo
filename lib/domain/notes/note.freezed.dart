@@ -20,12 +20,12 @@ class _$NoteTearOff {
       {required UniqueId id,
       required NoteBody body,
       required NoteColor color,
-      required FixedList<TodoItem> todo}) {
+      required FixedList<TodoItem> todos}) {
     return _Note(
       id: id,
       body: body,
       color: color,
-      todo: todo,
+      todos: todos,
     );
   }
 }
@@ -38,7 +38,7 @@ mixin _$Note {
   UniqueId get id => throw _privateConstructorUsedError;
   NoteBody get body => throw _privateConstructorUsedError;
   NoteColor get color => throw _privateConstructorUsedError;
-  FixedList<TodoItem> get todo => throw _privateConstructorUsedError;
+  FixedList<TodoItem> get todos => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $NoteCopyWith<Note> get copyWith => throw _privateConstructorUsedError;
@@ -49,7 +49,7 @@ abstract class $NoteCopyWith<$Res> {
   factory $NoteCopyWith(Note value, $Res Function(Note) then) =
       _$NoteCopyWithImpl<$Res>;
   $Res call(
-      {UniqueId id, NoteBody body, NoteColor color, FixedList<TodoItem> todo});
+      {UniqueId id, NoteBody body, NoteColor color, FixedList<TodoItem> todos});
 }
 
 /// @nodoc
@@ -65,7 +65,7 @@ class _$NoteCopyWithImpl<$Res> implements $NoteCopyWith<$Res> {
     Object? id = freezed,
     Object? body = freezed,
     Object? color = freezed,
-    Object? todo = freezed,
+    Object? todos = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -80,9 +80,9 @@ class _$NoteCopyWithImpl<$Res> implements $NoteCopyWith<$Res> {
           ? _value.color
           : color // ignore: cast_nullable_to_non_nullable
               as NoteColor,
-      todo: todo == freezed
-          ? _value.todo
-          : todo // ignore: cast_nullable_to_non_nullable
+      todos: todos == freezed
+          ? _value.todos
+          : todos // ignore: cast_nullable_to_non_nullable
               as FixedList<TodoItem>,
     ));
   }
@@ -94,7 +94,7 @@ abstract class _$NoteCopyWith<$Res> implements $NoteCopyWith<$Res> {
       __$NoteCopyWithImpl<$Res>;
   @override
   $Res call(
-      {UniqueId id, NoteBody body, NoteColor color, FixedList<TodoItem> todo});
+      {UniqueId id, NoteBody body, NoteColor color, FixedList<TodoItem> todos});
 }
 
 /// @nodoc
@@ -111,7 +111,7 @@ class __$NoteCopyWithImpl<$Res> extends _$NoteCopyWithImpl<$Res>
     Object? id = freezed,
     Object? body = freezed,
     Object? color = freezed,
-    Object? todo = freezed,
+    Object? todos = freezed,
   }) {
     return _then(_Note(
       id: id == freezed
@@ -126,9 +126,9 @@ class __$NoteCopyWithImpl<$Res> extends _$NoteCopyWithImpl<$Res>
           ? _value.color
           : color // ignore: cast_nullable_to_non_nullable
               as NoteColor,
-      todo: todo == freezed
-          ? _value.todo
-          : todo // ignore: cast_nullable_to_non_nullable
+      todos: todos == freezed
+          ? _value.todos
+          : todos // ignore: cast_nullable_to_non_nullable
               as FixedList<TodoItem>,
     ));
   }
@@ -137,11 +137,11 @@ class __$NoteCopyWithImpl<$Res> extends _$NoteCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_Note extends _Note {
-  const _$_Note(
+  _$_Note(
       {required this.id,
       required this.body,
       required this.color,
-      required this.todo})
+      required this.todos})
       : super._();
 
   @override
@@ -151,11 +151,11 @@ class _$_Note extends _Note {
   @override
   final NoteColor color;
   @override
-  final FixedList<TodoItem> todo;
+  final FixedList<TodoItem> todos;
 
   @override
   String toString() {
-    return 'Note(id: $id, body: $body, color: $color, todo: $todo)';
+    return 'Note(id: $id, body: $body, color: $color, todos: $todos)';
   }
 
   @override
@@ -168,8 +168,8 @@ class _$_Note extends _Note {
                 const DeepCollectionEquality().equals(other.body, body)) &&
             (identical(other.color, color) ||
                 const DeepCollectionEquality().equals(other.color, color)) &&
-            (identical(other.todo, todo) ||
-                const DeepCollectionEquality().equals(other.todo, todo)));
+            (identical(other.todos, todos) ||
+                const DeepCollectionEquality().equals(other.todos, todos)));
   }
 
   @override
@@ -178,7 +178,7 @@ class _$_Note extends _Note {
       const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(body) ^
       const DeepCollectionEquality().hash(color) ^
-      const DeepCollectionEquality().hash(todo);
+      const DeepCollectionEquality().hash(todos);
 
   @JsonKey(ignore: true)
   @override
@@ -187,12 +187,12 @@ class _$_Note extends _Note {
 }
 
 abstract class _Note extends Note {
-  const factory _Note(
+  factory _Note(
       {required UniqueId id,
       required NoteBody body,
       required NoteColor color,
-      required FixedList<TodoItem> todo}) = _$_Note;
-  const _Note._() : super._();
+      required FixedList<TodoItem> todos}) = _$_Note;
+  _Note._() : super._();
 
   @override
   UniqueId get id => throw _privateConstructorUsedError;
@@ -201,7 +201,7 @@ abstract class _Note extends Note {
   @override
   NoteColor get color => throw _privateConstructorUsedError;
   @override
-  FixedList<TodoItem> get todo => throw _privateConstructorUsedError;
+  FixedList<TodoItem> get todos => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$NoteCopyWith<_Note> get copyWith => throw _privateConstructorUsedError;

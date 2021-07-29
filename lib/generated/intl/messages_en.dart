@@ -21,17 +21,33 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
         "cancelByUser":
             MessageLookupByLibrary.simpleMessage("Canceled by the user"),
+        "delete": MessageLookupByLibrary.simpleMessage("Delete"),
+        "detailsForNerds":
+            MessageLookupByLibrary.simpleMessage("details for Nerds"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
         "emailAlreadyInUse": MessageLookupByLibrary.simpleMessage(
             "this Email is already in user"),
+        "iNeedHelp": MessageLookupByLibrary.simpleMessage("I Need Help"),
+        "imposibleError":
+            MessageLookupByLibrary.simpleMessage("IMPOSIBLE ERROR:"),
         "invalidEmail":
             MessageLookupByLibrary.simpleMessage("invalid Email enter"),
         "invalidInputs":
             MessageLookupByLibrary.simpleMessage("some imput are invalid"),
+        "invalidNote": MessageLookupByLibrary.simpleMessage("Invalid note"),
+        "notesOf": MessageLookupByLibrary.simpleMessage("\'s notes"),
         "passwaord": MessageLookupByLibrary.simpleMessage("Password"),
+        "pelaseContactSupport": MessageLookupByLibrary.simpleMessage(
+            "Pelase contact tecnical support"),
+        "permissionDenied":
+            MessageLookupByLibrary.simpleMessage("permission denied"),
+        "pleaseRestart":
+            MessageLookupByLibrary.simpleMessage("please restart the App"),
         "register": MessageLookupByLibrary.simpleMessage("Register"),
+        "selectedNote": MessageLookupByLibrary.simpleMessage("Selected Note:"),
         "serverError":
             MessageLookupByLibrary.simpleMessage("Some happend in the Server"),
         "shortPassword":
@@ -39,6 +55,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "singIn": MessageLookupByLibrary.simpleMessage("Sign in"),
         "singInWithGoogle":
             MessageLookupByLibrary.simpleMessage("Sign in with Google"),
-        "todo": MessageLookupByLibrary.simpleMessage("To do")
+        "todo": MessageLookupByLibrary.simpleMessage("To do"),
+        "unableToUpdate":
+            MessageLookupByLibrary.simpleMessage("unable to update try later"),
+        "unexpected": MessageLookupByLibrary.simpleMessage("Unexpected Error"),
+        "unrecoverableError":
+            MessageLookupByLibrary.simpleMessage("UNRECOVERABLE ERROR")
       };
 }
