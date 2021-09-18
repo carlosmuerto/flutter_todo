@@ -400,6 +400,16 @@ class S {
     );
   }
 
+  /// `Has to be in a single line`
+  String get onlyOneLine {
+    return Intl.message(
+      'Has to be in a single line',
+      name: 'onlyOneLine',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Saving, please wait...`
   String get saving {
     return Intl.message(

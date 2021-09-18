@@ -52,6 +52,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "invalidNote": MessageLookupByLibrary.simpleMessage("Invalid note"),
         "note": MessageLookupByLibrary.simpleMessage("Note"),
         "notesOf": MessageLookupByLibrary.simpleMessage("\'s notes"),
+        "onlyOneLine":
+            MessageLookupByLibrary.simpleMessage("Has to be in a single line"),
         "passwaord": MessageLookupByLibrary.simpleMessage("Password"),
         "pelaseContactSupport": MessageLookupByLibrary.simpleMessage(
             "Pelase contact tecnical support"),

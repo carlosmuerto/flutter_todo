@@ -35,5 +35,6 @@
 	"addATodo": "Add a todo: {actual} of {max}",
 	"todosListMaxed": "todos list is full ({max})",
 	"select": "Select",
+	"onlyOneLine": "Has to be in a single line",
 	"saving": "Saving, please wait..."
 }
