@@ -12,7 +12,9 @@ class AddTodoTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<NoteFormCubit, NoteFormState>(
-      buildWhen: (p, c) => p.note.todos.isfull != c.note.todos.isfull,
+      buildWhen: (p, c) =>
+          p.note.todos.length != c.note.todos.length ||
+          (p.note.todos.isfull != c.note.todos.isfull),
       builder: (context, state) {
         return ListTile(
           enabled: !state.note.todos.isfull,

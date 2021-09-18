@@ -30,7 +30,12 @@ class NoteCard extends StatelessWidget {
             children: [
               Text(
                 _note.body.getOrCrash(),
-                style: const TextStyle(fontSize: 18),
+                style: TextStyle(
+                  fontSize: 18,
+                  color: _note.color.getOrCrash().computeLuminance() > 0.5
+                      ? Colors.black
+                      : Colors.white,
+                ),
               ),
               if (!_note.todos.isEmpty) ...[
                 Padding(
@@ -41,7 +46,9 @@ class NoteCard extends StatelessWidget {
                         .getOrCrash()
                         .map(
                           (todoItem) => TodoDisplay(
-                              TodoItemPrimitive.fromDomain(todoItem)),
+                            TodoItemPrimitive.fromDomain(todoItem),
+                            _note.color.getOrCrash(),
+                          ),
                         )
                         .asList(),
                   ),
@@ -87,8 +94,10 @@ class NoteCard extends StatelessWidget {
 
 class TodoDisplay extends StatelessWidget {
   final TodoItemPrimitive _todoItem;
+  final Color _noteColor;
   const TodoDisplay(
-    this._todoItem, {
+    this._todoItem,
+    this._noteColor, {
     Key? key,
   }) : super(key: key);
 
@@ -97,16 +106,34 @@ class TodoDisplay extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           if (_todoItem.done)
-            Icon(
-              Icons.check_box,
-              color: Theme.of(context).accentColor,
+            Container(
+              margin: const EdgeInsets.only(right: 4),
+              child: Icon(
+                Icons.check_box,
+                color: _noteColor.computeLuminance() > 0.5
+                    ? Theme.of(context).accentColor
+                    : Colors.white,
+              ),
             )
           else
-            Icon(
-              Icons.check_box_outline_blank,
-              color: Theme.of(context).accentColor,
+            Container(
+              margin: const EdgeInsets.only(right: 4),
+              child: Icon(
+                Icons.check_box_outline_blank,
+                color: _noteColor.computeLuminance() > 0.5
+                    ? Theme.of(context).accentColor
+                    : Colors.white,
+              ),
             ),
-          Text(_todoItem.name),
+          Text(
+            _todoItem.name,
+            style: TextStyle(
+              fontSize: 18,
+              color: _noteColor.computeLuminance() > 0.5
+                  ? Colors.black
+                  : Colors.white,
+            ),
+          ),
         ],
       );
 }
