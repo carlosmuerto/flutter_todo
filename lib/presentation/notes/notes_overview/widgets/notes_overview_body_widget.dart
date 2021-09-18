@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_todo/application/notes/note_watcher/note_watcher_cubit.dart';
 import 'package:flutter_todo/domain/notes/note.dart';
-import 'package:flutter_todo/domain/notes/note_failure.dart';
 import 'package:kt_dart/collection.dart';
-import 'package:flutter_todo/generated/l10n.dart';
 
 import 'critical_failure_display_widget.dart';
 import 'error_note_card_widget.dart';
@@ -20,7 +18,7 @@ class NotesOverviewBody extends StatelessWidget {
         return state.when(
           initial: _initialWidget,
           loadInprogress: () => _loadInprogressWidget(context),
-          loadSuccess: (notes) => _loadSuccessWidget(context, notes),
+          loadSuccess: (notes, _) => _loadSuccessWidget(context, notes),
           loadFailure: (failure) => CriticalFailureDisplay(failure),
         );
       },

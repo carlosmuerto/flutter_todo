@@ -16,8 +16,10 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$TodoItemTearOff {
   const _$TodoItemTearOff();
 
-  _TodoItem call({required TodoName name, required bool done}) {
+  _TodoItem call(
+      {required UniqueId id, required TodoName name, required bool done}) {
     return _TodoItem(
+      id: id,
       name: name,
       done: done,
     );
@@ -29,6 +31,7 @@ const $TodoItem = _$TodoItemTearOff();
 
 /// @nodoc
 mixin _$TodoItem {
+  UniqueId get id => throw _privateConstructorUsedError;
   TodoName get name => throw _privateConstructorUsedError;
   bool get done => throw _privateConstructorUsedError;
 
@@ -41,7 +44,7 @@ mixin _$TodoItem {
 abstract class $TodoItemCopyWith<$Res> {
   factory $TodoItemCopyWith(TodoItem value, $Res Function(TodoItem) then) =
       _$TodoItemCopyWithImpl<$Res>;
-  $Res call({TodoName name, bool done});
+  $Res call({UniqueId id, TodoName name, bool done});
 }
 
 /// @nodoc
@@ -54,10 +57,15 @@ class _$TodoItemCopyWithImpl<$Res> implements $TodoItemCopyWith<$Res> {
 
   @override
   $Res call({
+    Object? id = freezed,
     Object? name = freezed,
     Object? done = freezed,
   }) {
     return _then(_value.copyWith(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as UniqueId,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -75,7 +83,7 @@ abstract class _$TodoItemCopyWith<$Res> implements $TodoItemCopyWith<$Res> {
   factory _$TodoItemCopyWith(_TodoItem value, $Res Function(_TodoItem) then) =
       __$TodoItemCopyWithImpl<$Res>;
   @override
-  $Res call({TodoName name, bool done});
+  $Res call({UniqueId id, TodoName name, bool done});
 }
 
 /// @nodoc
@@ -89,10 +97,15 @@ class __$TodoItemCopyWithImpl<$Res> extends _$TodoItemCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? id = freezed,
     Object? name = freezed,
     Object? done = freezed,
   }) {
     return _then(_TodoItem(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as UniqueId,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -108,8 +121,11 @@ class __$TodoItemCopyWithImpl<$Res> extends _$TodoItemCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_TodoItem extends _TodoItem {
-  const _$_TodoItem({required this.name, required this.done}) : super._();
+  const _$_TodoItem({required this.id, required this.name, required this.done})
+      : super._();
 
+  @override
+  final UniqueId id;
   @override
   final TodoName name;
   @override
@@ -117,13 +133,15 @@ class _$_TodoItem extends _TodoItem {
 
   @override
   String toString() {
-    return 'TodoItem(name: $name, done: $done)';
+    return 'TodoItem(id: $id, name: $name, done: $done)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _TodoItem &&
+            (identical(other.id, id) ||
+                const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.name, name) ||
                 const DeepCollectionEquality().equals(other.name, name)) &&
             (identical(other.done, done) ||
@@ -133,6 +151,7 @@ class _$_TodoItem extends _TodoItem {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(name) ^
       const DeepCollectionEquality().hash(done);
 
@@ -143,10 +162,14 @@ class _$_TodoItem extends _TodoItem {
 }
 
 abstract class _TodoItem extends TodoItem {
-  const factory _TodoItem({required TodoName name, required bool done}) =
-      _$_TodoItem;
+  const factory _TodoItem(
+      {required UniqueId id,
+      required TodoName name,
+      required bool done}) = _$_TodoItem;
   const _TodoItem._() : super._();
 
+  @override
+  UniqueId get id => throw _privateConstructorUsedError;
   @override
   TodoName get name => throw _privateConstructorUsedError;
   @override

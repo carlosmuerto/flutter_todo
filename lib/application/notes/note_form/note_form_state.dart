@@ -7,7 +7,7 @@ class NoteFormState with _$NoteFormState {
     required bool showErrors,
     required bool isEditing,
     required bool isSaving,
-    required Option<NoteFailure> saveFailureOrSuccessOption,
+    required Option<Either<NoteFailure, Unit>> saveFailureOrSuccessOption,
   }) = _NoteFormState;
 
   factory NoteFormState.initial({int? maxTodos}) => NoteFormState(

@@ -21,7 +21,7 @@ class _$NoteFormStateTearOff {
       required bool showErrors,
       required bool isEditing,
       required bool isSaving,
-      required Option<NoteFailure> saveFailureOrSuccessOption}) {
+      required Option<Either<NoteFailure, Unit>> saveFailureOrSuccessOption}) {
     return _NoteFormState(
       note: note,
       showErrors: showErrors,
@@ -41,7 +41,7 @@ mixin _$NoteFormState {
   bool get showErrors => throw _privateConstructorUsedError;
   bool get isEditing => throw _privateConstructorUsedError;
   bool get isSaving => throw _privateConstructorUsedError;
-  Option<NoteFailure> get saveFailureOrSuccessOption =>
+  Option<Either<NoteFailure, Unit>> get saveFailureOrSuccessOption =>
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -59,7 +59,7 @@ abstract class $NoteFormStateCopyWith<$Res> {
       bool showErrors,
       bool isEditing,
       bool isSaving,
-      Option<NoteFailure> saveFailureOrSuccessOption});
+      Option<Either<NoteFailure, Unit>> saveFailureOrSuccessOption});
 
   $NoteCopyWith<$Res> get note;
 }
@@ -101,7 +101,7 @@ class _$NoteFormStateCopyWithImpl<$Res>
       saveFailureOrSuccessOption: saveFailureOrSuccessOption == freezed
           ? _value.saveFailureOrSuccessOption
           : saveFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
-              as Option<NoteFailure>,
+              as Option<Either<NoteFailure, Unit>>,
     ));
   }
 
@@ -125,7 +125,7 @@ abstract class _$NoteFormStateCopyWith<$Res>
       bool showErrors,
       bool isEditing,
       bool isSaving,
-      Option<NoteFailure> saveFailureOrSuccessOption});
+      Option<Either<NoteFailure, Unit>> saveFailureOrSuccessOption});
 
   @override
   $NoteCopyWith<$Res> get note;
@@ -170,7 +170,7 @@ class __$NoteFormStateCopyWithImpl<$Res>
       saveFailureOrSuccessOption: saveFailureOrSuccessOption == freezed
           ? _value.saveFailureOrSuccessOption
           : saveFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
-              as Option<NoteFailure>,
+              as Option<Either<NoteFailure, Unit>>,
     ));
   }
 }
@@ -194,7 +194,7 @@ class _$_NoteFormState implements _NoteFormState {
   @override
   final bool isSaving;
   @override
-  final Option<NoteFailure> saveFailureOrSuccessOption;
+  final Option<Either<NoteFailure, Unit>> saveFailureOrSuccessOption;
 
   @override
   String toString() {
@@ -240,12 +240,12 @@ class _$_NoteFormState implements _NoteFormState {
 
 abstract class _NoteFormState implements NoteFormState {
   factory _NoteFormState(
-          {required Note note,
-          required bool showErrors,
-          required bool isEditing,
-          required bool isSaving,
-          required Option<NoteFailure> saveFailureOrSuccessOption}) =
-      _$_NoteFormState;
+      {required Note note,
+      required bool showErrors,
+      required bool isEditing,
+      required bool isSaving,
+      required Option<Either<NoteFailure, Unit>>
+          saveFailureOrSuccessOption}) = _$_NoteFormState;
 
   @override
   Note get note => throw _privateConstructorUsedError;
@@ -256,7 +256,7 @@ abstract class _NoteFormState implements NoteFormState {
   @override
   bool get isSaving => throw _privateConstructorUsedError;
   @override
-  Option<NoteFailure> get saveFailureOrSuccessOption =>
+  Option<Either<NoteFailure, Unit>> get saveFailureOrSuccessOption =>
       throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)

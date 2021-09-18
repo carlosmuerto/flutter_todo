@@ -60,6 +60,16 @@ class S {
     );
   }
 
+  /// `Note`
+  String get note {
+    return Intl.message(
+      'Note',
+      name: 'note',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Password`
   String get passwaord {
     return Intl.message(
@@ -300,11 +310,101 @@ class S {
     );
   }
 
+  /// `Edit a note`
+  String get editANote {
+    return Intl.message(
+      'Edit a note',
+      name: 'editANote',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create a note`
+  String get createANote {
+    return Intl.message(
+      'Create a note',
+      name: 'createANote',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `UNRECOVERABLE ERROR`
   String get unrecoverableError {
     return Intl.message(
       'UNRECOVERABLE ERROR',
       name: 'unrecoverableError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `exceedding Length, max: {maxLength}`
+  String exceeddingLength(Object maxLength) {
+    return Intl.message(
+      'exceedding Length, max: $maxLength',
+      name: 'exceeddingLength',
+      desc: '',
+      args: [maxLength],
+    );
+  }
+
+  /// `cannot be empty`
+  String get cannotBeEmpty {
+    return Intl.message(
+      'cannot be empty',
+      name: 'cannotBeEmpty',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Pick a color`
+  String get pickAColor {
+    return Intl.message(
+      'Pick a color',
+      name: 'pickAColor',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add a todo: {actual} of {max}`
+  String addATodo(Object actual, Object max) {
+    return Intl.message(
+      'Add a todo: $actual of $max',
+      name: 'addATodo',
+      desc: '',
+      args: [actual, max],
+    );
+  }
+
+  /// `todos list is full ({max})`
+  String todosListMaxed(Object max) {
+    return Intl.message(
+      'todos list is full ($max)',
+      name: 'todosListMaxed',
+      desc: '',
+      args: [max],
+    );
+  }
+
+  /// `Select`
+  String get select {
+    return Intl.message(
+      'Select',
+      name: 'select',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Saving, please wait...`
+  String get saving {
+    return Intl.message(
+      'Saving, please wait...',
+      name: 'saving',
       desc: '',
       args: [],
     );

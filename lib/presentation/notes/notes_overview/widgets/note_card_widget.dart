@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_todo/application/notes/note_actor/note_actor_cubit.dart';
 import 'package:flutter_todo/domain/notes/note.dart';
 import 'package:flutter_todo/presentation/notes/note_form/primitives/todo_item_primitive.dart';
+import 'package:flutter_todo/presentation/routes/router.gr.dart';
 import 'package:kt_dart/collection.dart';
 import 'package:flutter_todo/generated/l10n.dart';
 
@@ -16,7 +17,9 @@ class NoteCard extends StatelessWidget {
     return Card(
       color: _note.color.getOrCrash(),
       child: InkWell(
-        onTap: () {},
+        onTap: () {
+          context.router.push(NoteFormRoute(editedNote: _note));
+        },
         onLongPress: () {
           _showDeletionDialog(context, context.read<NoteActorCubit>());
         },

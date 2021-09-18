@@ -1,6 +1,7 @@
 {
 	"@@locale": "en",
 	"email": "Email",
+	"note": "Note",
 	"passwaord": "Password",
 	"singIn": "Sign in",
 	"singInWithGoogle": "Sign in with Google",
@@ -25,5 +26,14 @@
 	"detailsForNerds": "details for Nerds",
 	"pelaseContactSupport": "Pelase contact tecnical support",
 	"selectedNote": "Selected Note:",
-	"unrecoverableError": "UNRECOVERABLE ERROR"
+	"editANote": "Edit a note",
+	"createANote": "Create a note",
+	"unrecoverableError": "UNRECOVERABLE ERROR",
+	"exceeddingLength": "exceedding Length, max: {maxLength}",
+	"cannotBeEmpty": "cannot be empty",
+	"pickAColor": "Pick a color",
+	"addATodo": "Add a todo: {actual} of {max}",
+	"todosListMaxed": "todos list is full ({max})",
+	"select": "Select",
+	"saving": "Saving, please wait..."
 }

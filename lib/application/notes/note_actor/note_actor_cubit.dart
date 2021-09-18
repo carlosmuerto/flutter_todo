@@ -18,8 +18,8 @@ class NoteActorCubit extends Cubit<NoteActorState> {
     _noteRepository.delete(note).then((successOrFailure) {
       emit(
         successOrFailure.fold(
-          () => const NoteActorState.deleteSuccess(),
           (f) => NoteActorState.deleteFailure(f),
+          (_) => const NoteActorState.deleteSuccess(),
         ),
       );
     });

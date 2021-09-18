@@ -6,6 +6,7 @@ import 'package:flutter_todo/application/notes/note_actor/note_actor_cubit.dart'
 import 'package:flutter_todo/application/notes/note_watcher/note_watcher_cubit.dart';
 import 'package:flutter_todo/generated/l10n.dart';
 import 'package:flutter_todo/injection.dart';
+import 'package:flutter_todo/presentation/notes/notes_overview/widgets/umcompleted_switch.dart';
 import 'package:flutter_todo/presentation/routes/router.gr.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter_todo/tools/extension.dart';
@@ -67,16 +68,21 @@ class NotesOverviewPage extends StatelessWidget {
                       },
                     ),
                     actions: const [
+                      UncompletedSwitch(),
+                      /*
                       IconButton(
                         icon: Icon(Icons.indeterminate_check_box),
                         onPressed: doNoting,
                       )
+                      */
                     ],
                   ),
                   body: const NotesOverviewBody(),
-                  floatingActionButton: const FloatingActionButton(
-                    onPressed: doNoting,
-                    child: Icon(Icons.add),
+                  floatingActionButton: FloatingActionButton(
+                    onPressed: () {
+                      context.router.push(NoteFormRoute());
+                    },
+                    child: const Icon(Icons.add),
                   ),
                 );
               },

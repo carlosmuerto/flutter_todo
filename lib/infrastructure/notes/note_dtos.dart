@@ -15,6 +15,7 @@ part 'note_dtos.g.dart';
 
 @freezed
 class NoteDto with _$NoteDto {
+  @JsonSerializable(explicitToJson: true)
   const factory NoteDto({
     required String id,
     required String body,
@@ -52,13 +53,31 @@ class NoteDto with _$NoteDto {
       _$NoteDtoFromJson(json);
 
   factory NoteDto.fromFirestore(DocumentSnapshot<Map<String, dynamic>> doc) =>
-      NoteDto.fromJson(doc.data()!..addAll({"id": doc.id}));
+      NoteDto.fromJson(doc.data()!).copyWith(id: doc.id);
 }
 
-class ServerTimeStampConverter implements JsonConverter<FieldValue, Object> {
+/*
+class FixedListConverter
+    implements
+        JsonConverter<FixedList<TodoItemDto>, List<Map<String, dynamic>>> {
+  const FixedListConverter();
+  @override
+  FixedList<TodoItemDto> fromJson(List<Map<String, dynamic>>? jsonList) =>
+      FixedList<TodoItemDto>(
+        KtList.from((jsonList ?? []).map((json) => TodoItemDto.fromJson(json))),
+      );
+
+  @override
+  List<Map<String, dynamic>> toJson(FixedList<TodoItemDto> fixedList) {
+    print("to json");
+    return fixedList.getOrCrash().map((item) => item.toJson()).asList();
+  }
+}
+*/
+class ServerTimeStampConverter implements JsonConverter<FieldValue, Object?> {
   const ServerTimeStampConverter();
   @override
-  FieldValue fromJson(Object json) => FieldValue.serverTimestamp();
+  FieldValue fromJson(Object? json) => FieldValue.serverTimestamp();
 
   @override
   Object toJson(FieldValue fieldValue) => fieldValue;
@@ -66,7 +85,9 @@ class ServerTimeStampConverter implements JsonConverter<FieldValue, Object> {
 
 @freezed
 class TodoItemDto with _$TodoItemDto {
+  @JsonSerializable(explicitToJson: true)
   const factory TodoItemDto({
+    required String id,
     @JsonKey(name: 'name') required String name,
     required bool done,
   }) = _TodoItemDto;
@@ -74,11 +95,13 @@ class TodoItemDto with _$TodoItemDto {
   const TodoItemDto._();
 
   factory TodoItemDto.fromDomain(TodoItem todoItem) => TodoItemDto(
+        id: todoItem.id.getOrCrash(),
         name: todoItem.name.getOrCrash(),
         done: todoItem.done,
       );
 
   TodoItem toDomain() => TodoItem(
+        id: UniqueId.fromString(id),
         name: TodoName(name),
         done: done,
       );

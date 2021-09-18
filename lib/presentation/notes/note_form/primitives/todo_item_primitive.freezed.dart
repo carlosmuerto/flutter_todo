@@ -16,8 +16,10 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$TodoItemPrimitiveTearOff {
   const _$TodoItemPrimitiveTearOff();
 
-  _TodoItemPrimitive call({required String name, required bool done}) {
+  _TodoItemPrimitive call(
+      {required String id, required String name, required bool done}) {
     return _TodoItemPrimitive(
+      id: id,
       name: name,
       done: done,
     );
@@ -29,6 +31,7 @@ const $TodoItemPrimitive = _$TodoItemPrimitiveTearOff();
 
 /// @nodoc
 mixin _$TodoItemPrimitive {
+  String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   bool get done => throw _privateConstructorUsedError;
 
@@ -42,7 +45,7 @@ abstract class $TodoItemPrimitiveCopyWith<$Res> {
   factory $TodoItemPrimitiveCopyWith(
           TodoItemPrimitive value, $Res Function(TodoItemPrimitive) then) =
       _$TodoItemPrimitiveCopyWithImpl<$Res>;
-  $Res call({String name, bool done});
+  $Res call({String id, String name, bool done});
 }
 
 /// @nodoc
@@ -56,10 +59,15 @@ class _$TodoItemPrimitiveCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? id = freezed,
     Object? name = freezed,
     Object? done = freezed,
   }) {
     return _then(_value.copyWith(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -79,7 +87,7 @@ abstract class _$TodoItemPrimitiveCopyWith<$Res>
           _TodoItemPrimitive value, $Res Function(_TodoItemPrimitive) then) =
       __$TodoItemPrimitiveCopyWithImpl<$Res>;
   @override
-  $Res call({String name, bool done});
+  $Res call({String id, String name, bool done});
 }
 
 /// @nodoc
@@ -95,10 +103,15 @@ class __$TodoItemPrimitiveCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? id = freezed,
     Object? name = freezed,
     Object? done = freezed,
   }) {
     return _then(_TodoItemPrimitive(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -114,9 +127,12 @@ class __$TodoItemPrimitiveCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_TodoItemPrimitive extends _TodoItemPrimitive {
-  const _$_TodoItemPrimitive({required this.name, required this.done})
+  const _$_TodoItemPrimitive(
+      {required this.id, required this.name, required this.done})
       : super._();
 
+  @override
+  final String id;
   @override
   final String name;
   @override
@@ -124,13 +140,15 @@ class _$_TodoItemPrimitive extends _TodoItemPrimitive {
 
   @override
   String toString() {
-    return 'TodoItemPrimitive(name: $name, done: $done)';
+    return 'TodoItemPrimitive(id: $id, name: $name, done: $done)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _TodoItemPrimitive &&
+            (identical(other.id, id) ||
+                const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.name, name) ||
                 const DeepCollectionEquality().equals(other.name, name)) &&
             (identical(other.done, done) ||
@@ -140,6 +158,7 @@ class _$_TodoItemPrimitive extends _TodoItemPrimitive {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(name) ^
       const DeepCollectionEquality().hash(done);
 
@@ -150,10 +169,14 @@ class _$_TodoItemPrimitive extends _TodoItemPrimitive {
 }
 
 abstract class _TodoItemPrimitive extends TodoItemPrimitive {
-  const factory _TodoItemPrimitive({required String name, required bool done}) =
-      _$_TodoItemPrimitive;
+  const factory _TodoItemPrimitive(
+      {required String id,
+      required String name,
+      required bool done}) = _$_TodoItemPrimitive;
   const _TodoItemPrimitive._() : super._();
 
+  @override
+  String get id => throw _privateConstructorUsedError;
   @override
   String get name => throw _privateConstructorUsedError;
   @override

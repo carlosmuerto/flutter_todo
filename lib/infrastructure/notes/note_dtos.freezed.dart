@@ -166,7 +166,8 @@ class __$NoteDtoCopyWithImpl<$Res> extends _$NoteDtoCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(explicitToJson: true)
 class _$_NoteDto extends _NoteDto {
   const _$_NoteDto(
       {required this.id,
@@ -271,8 +272,11 @@ class _$TodoItemDtoTearOff {
   const _$TodoItemDtoTearOff();
 
   _TodoItemDto call(
-      {@JsonKey(name: 'name') required String name, required bool done}) {
+      {required String id,
+      @JsonKey(name: 'name') required String name,
+      required bool done}) {
     return _TodoItemDto(
+      id: id,
       name: name,
       done: done,
     );
@@ -288,6 +292,7 @@ const $TodoItemDto = _$TodoItemDtoTearOff();
 
 /// @nodoc
 mixin _$TodoItemDto {
+  String get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'name')
   String get name => throw _privateConstructorUsedError;
   bool get done => throw _privateConstructorUsedError;
@@ -303,7 +308,7 @@ abstract class $TodoItemDtoCopyWith<$Res> {
   factory $TodoItemDtoCopyWith(
           TodoItemDto value, $Res Function(TodoItemDto) then) =
       _$TodoItemDtoCopyWithImpl<$Res>;
-  $Res call({@JsonKey(name: 'name') String name, bool done});
+  $Res call({String id, @JsonKey(name: 'name') String name, bool done});
 }
 
 /// @nodoc
@@ -316,10 +321,15 @@ class _$TodoItemDtoCopyWithImpl<$Res> implements $TodoItemDtoCopyWith<$Res> {
 
   @override
   $Res call({
+    Object? id = freezed,
     Object? name = freezed,
     Object? done = freezed,
   }) {
     return _then(_value.copyWith(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -339,7 +349,7 @@ abstract class _$TodoItemDtoCopyWith<$Res>
           _TodoItemDto value, $Res Function(_TodoItemDto) then) =
       __$TodoItemDtoCopyWithImpl<$Res>;
   @override
-  $Res call({@JsonKey(name: 'name') String name, bool done});
+  $Res call({String id, @JsonKey(name: 'name') String name, bool done});
 }
 
 /// @nodoc
@@ -354,10 +364,15 @@ class __$TodoItemDtoCopyWithImpl<$Res> extends _$TodoItemDtoCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? id = freezed,
     Object? name = freezed,
     Object? done = freezed,
   }) {
     return _then(_TodoItemDto(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -371,15 +386,20 @@ class __$TodoItemDtoCopyWithImpl<$Res> extends _$TodoItemDtoCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(explicitToJson: true)
 class _$_TodoItemDto extends _TodoItemDto {
   const _$_TodoItemDto(
-      {@JsonKey(name: 'name') required this.name, required this.done})
+      {required this.id,
+      @JsonKey(name: 'name') required this.name,
+      required this.done})
       : super._();
 
   factory _$_TodoItemDto.fromJson(Map<String, dynamic> json) =>
       _$_$_TodoItemDtoFromJson(json);
 
+  @override
+  final String id;
   @override
   @JsonKey(name: 'name')
   final String name;
@@ -388,13 +408,15 @@ class _$_TodoItemDto extends _TodoItemDto {
 
   @override
   String toString() {
-    return 'TodoItemDto(name: $name, done: $done)';
+    return 'TodoItemDto(id: $id, name: $name, done: $done)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _TodoItemDto &&
+            (identical(other.id, id) ||
+                const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.name, name) ||
                 const DeepCollectionEquality().equals(other.name, name)) &&
             (identical(other.done, done) ||
@@ -404,6 +426,7 @@ class _$_TodoItemDto extends _TodoItemDto {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(name) ^
       const DeepCollectionEquality().hash(done);
 
@@ -420,13 +443,16 @@ class _$_TodoItemDto extends _TodoItemDto {
 
 abstract class _TodoItemDto extends TodoItemDto {
   const factory _TodoItemDto(
-      {@JsonKey(name: 'name') required String name,
+      {required String id,
+      @JsonKey(name: 'name') required String name,
       required bool done}) = _$_TodoItemDto;
   const _TodoItemDto._() : super._();
 
   factory _TodoItemDto.fromJson(Map<String, dynamic> json) =
       _$_TodoItemDto.fromJson;
 
+  @override
+  String get id => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'name')
   String get name => throw _privateConstructorUsedError;

@@ -43,10 +43,19 @@ class NoteFormCubit extends Cubit<NoteFormState> {
       ));
 
   Future<void> save() async {
+    Either<NoteFailure, Unit>? failureOrSuccess;
     emit(state.copyWith(
       isSaving: true,
       saveFailureOrSuccessOption: none(),
     ));
+
+    if (state.note.failureOption.isNone()) {
+      failureOrSuccess = state.isEditing
+          ? await _noteRepository.update(state.note)
+          : await _noteRepository.create(state.note);
+    }
+
+    /*
     final failureOrSuccess = await state.note.failureOption.fold(
       () => state.isEditing
           ? _noteRepository.update(state.note)
@@ -57,11 +66,13 @@ class NoteFormCubit extends Cubit<NoteFormState> {
         ),
       ),
     );
+    */
 
     emit(
       state.copyWith(
-        isSaving: true,
-        saveFailureOrSuccessOption: failureOrSuccess,
+        isSaving: false,
+        showErrors: true,
+        saveFailureOrSuccessOption: optionOf(failureOrSuccess),
       ),
     );
   }

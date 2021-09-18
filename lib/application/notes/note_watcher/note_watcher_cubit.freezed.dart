@@ -24,9 +24,10 @@ class _$NoteWatcherStateTearOff {
     return const _LoadInprogress();
   }
 
-  _LoadSuccess loadSuccess(KtList<Note> notes) {
+  _LoadSuccess loadSuccess(KtList<Note> notes, {required bool isWatchingAll}) {
     return _LoadSuccess(
       notes,
+      isWatchingAll: isWatchingAll,
     );
   }
 
@@ -46,7 +47,8 @@ mixin _$NoteWatcherState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loadInprogress,
-    required TResult Function(KtList<Note> notes) loadSuccess,
+    required TResult Function(KtList<Note> notes, bool isWatchingAll)
+        loadSuccess,
     required TResult Function(NoteFailure noteFailure) loadFailure,
   }) =>
       throw _privateConstructorUsedError;
@@ -54,7 +56,7 @@ mixin _$NoteWatcherState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loadInprogress,
-    TResult Function(KtList<Note> notes)? loadSuccess,
+    TResult Function(KtList<Note> notes, bool isWatchingAll)? loadSuccess,
     TResult Function(NoteFailure noteFailure)? loadFailure,
     required TResult orElse(),
   }) =>
@@ -134,7 +136,8 @@ class _$_Initial implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loadInprogress,
-    required TResult Function(KtList<Note> notes) loadSuccess,
+    required TResult Function(KtList<Note> notes, bool isWatchingAll)
+        loadSuccess,
     required TResult Function(NoteFailure noteFailure) loadFailure,
   }) {
     return initial();
@@ -145,7 +148,7 @@ class _$_Initial implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loadInprogress,
-    TResult Function(KtList<Note> notes)? loadSuccess,
+    TResult Function(KtList<Note> notes, bool isWatchingAll)? loadSuccess,
     TResult Function(NoteFailure noteFailure)? loadFailure,
     required TResult orElse(),
   }) {
@@ -228,7 +231,8 @@ class _$_LoadInprogress implements _LoadInprogress {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loadInprogress,
-    required TResult Function(KtList<Note> notes) loadSuccess,
+    required TResult Function(KtList<Note> notes, bool isWatchingAll)
+        loadSuccess,
     required TResult Function(NoteFailure noteFailure) loadFailure,
   }) {
     return loadInprogress();
@@ -239,7 +243,7 @@ class _$_LoadInprogress implements _LoadInprogress {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loadInprogress,
-    TResult Function(KtList<Note> notes)? loadSuccess,
+    TResult Function(KtList<Note> notes, bool isWatchingAll)? loadSuccess,
     TResult Function(NoteFailure noteFailure)? loadFailure,
     required TResult orElse(),
   }) {
@@ -285,7 +289,7 @@ abstract class _$LoadSuccessCopyWith<$Res> {
   factory _$LoadSuccessCopyWith(
           _LoadSuccess value, $Res Function(_LoadSuccess) then) =
       __$LoadSuccessCopyWithImpl<$Res>;
-  $Res call({KtList<Note> notes});
+  $Res call({KtList<Note> notes, bool isWatchingAll});
 }
 
 /// @nodoc
@@ -302,12 +306,17 @@ class __$LoadSuccessCopyWithImpl<$Res>
   @override
   $Res call({
     Object? notes = freezed,
+    Object? isWatchingAll = freezed,
   }) {
     return _then(_LoadSuccess(
       notes == freezed
           ? _value.notes
           : notes // ignore: cast_nullable_to_non_nullable
               as KtList<Note>,
+      isWatchingAll: isWatchingAll == freezed
+          ? _value.isWatchingAll
+          : isWatchingAll // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -315,14 +324,16 @@ class __$LoadSuccessCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_LoadSuccess implements _LoadSuccess {
-  const _$_LoadSuccess(this.notes);
+  const _$_LoadSuccess(this.notes, {required this.isWatchingAll});
 
   @override
   final KtList<Note> notes;
+  @override
+  final bool isWatchingAll;
 
   @override
   String toString() {
-    return 'NoteWatcherState.loadSuccess(notes: $notes)';
+    return 'NoteWatcherState.loadSuccess(notes: $notes, isWatchingAll: $isWatchingAll)';
   }
 
   @override
@@ -330,12 +341,17 @@ class _$_LoadSuccess implements _LoadSuccess {
     return identical(this, other) ||
         (other is _LoadSuccess &&
             (identical(other.notes, notes) ||
-                const DeepCollectionEquality().equals(other.notes, notes)));
+                const DeepCollectionEquality().equals(other.notes, notes)) &&
+            (identical(other.isWatchingAll, isWatchingAll) ||
+                const DeepCollectionEquality()
+                    .equals(other.isWatchingAll, isWatchingAll)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(notes);
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(notes) ^
+      const DeepCollectionEquality().hash(isWatchingAll);
 
   @JsonKey(ignore: true)
   @override
@@ -347,10 +363,11 @@ class _$_LoadSuccess implements _LoadSuccess {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loadInprogress,
-    required TResult Function(KtList<Note> notes) loadSuccess,
+    required TResult Function(KtList<Note> notes, bool isWatchingAll)
+        loadSuccess,
     required TResult Function(NoteFailure noteFailure) loadFailure,
   }) {
-    return loadSuccess(notes);
+    return loadSuccess(notes, isWatchingAll);
   }
 
   @override
@@ -358,12 +375,12 @@ class _$_LoadSuccess implements _LoadSuccess {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loadInprogress,
-    TResult Function(KtList<Note> notes)? loadSuccess,
+    TResult Function(KtList<Note> notes, bool isWatchingAll)? loadSuccess,
     TResult Function(NoteFailure noteFailure)? loadFailure,
     required TResult orElse(),
   }) {
     if (loadSuccess != null) {
-      return loadSuccess(notes);
+      return loadSuccess(notes, isWatchingAll);
     }
     return orElse();
   }
@@ -396,9 +413,11 @@ class _$_LoadSuccess implements _LoadSuccess {
 }
 
 abstract class _LoadSuccess implements NoteWatcherState {
-  const factory _LoadSuccess(KtList<Note> notes) = _$_LoadSuccess;
+  const factory _LoadSuccess(KtList<Note> notes,
+      {required bool isWatchingAll}) = _$_LoadSuccess;
 
   KtList<Note> get notes => throw _privateConstructorUsedError;
+  bool get isWatchingAll => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$LoadSuccessCopyWith<_LoadSuccess> get copyWith =>
       throw _privateConstructorUsedError;
@@ -481,7 +500,8 @@ class _$_LoadFailure implements _LoadFailure {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loadInprogress,
-    required TResult Function(KtList<Note> notes) loadSuccess,
+    required TResult Function(KtList<Note> notes, bool isWatchingAll)
+        loadSuccess,
     required TResult Function(NoteFailure noteFailure) loadFailure,
   }) {
     return loadFailure(noteFailure);
@@ -492,7 +512,7 @@ class _$_LoadFailure implements _LoadFailure {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loadInprogress,
-    TResult Function(KtList<Note> notes)? loadSuccess,
+    TResult Function(KtList<Note> notes, bool isWatchingAll)? loadSuccess,
     TResult Function(NoteFailure noteFailure)? loadFailure,
     required TResult orElse(),
   }) {

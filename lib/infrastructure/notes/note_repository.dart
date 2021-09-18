@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_todo/infrastructure/notes/note_dtos.dart';
 import 'package:injectable/injectable.dart';
 import 'package:kt_dart/collection.dart';
@@ -51,19 +50,14 @@ class FirebaseFirestoreNoteRepository implements INoteRepository {
         .orderBy('serverTimeStamp', descending: true)
         .snapshots()
         .map(
-          (snapshot) => snapshot.docs.map(
-            (doc) => NoteDto.fromJson(
-              doc.data(),
-            ).toDomain(),
+          (snapshot) => right<NoteFailure, KtList<Note>>(
+            snapshot.docs
+                .map((doc) => NoteDto.fromFirestore(doc).toDomain())
+                .where((note) =>
+                    note.todos.getOrCrash().any((todoItem) => !todoItem.done))
+                .toImmutableList(),
           ),
         )
-        .map((notes) => right<NoteFailure, KtList<Note>>(notes
-            .where(
-              (note) => note.todos.getOrCrash().any(
-                    (todoItem) => !todoItem.done,
-                  ),
-            )
-            .toImmutableList()))
         .onErrorReturnWith((e, st) {
       if (e is FirebaseException && e.message != null) {
         switch (e.code) {
@@ -79,55 +73,55 @@ class FirebaseFirestoreNoteRepository implements INoteRepository {
   }
 
   @override
-  Future<Option<NoteFailure>> create(Note note) async {
+  Future<Either<NoteFailure, Unit>> create(Note note) async {
     try {
       final userDoc = await FirebaseFirestore.instance.userDocument();
       final noteDto = NoteDto.formDomain(note);
       await userDoc.noteCollection.doc(noteDto.id).set(noteDto.toJson());
-      return none();
+      return right(unit);
     } on FirebaseException catch (e) {
       switch (e.code) {
         case 'PERMISSION_DENIED':
-          return some(const NoteFailure.permissionDenied());
+          return left(const NoteFailure.permissionDenied());
         default:
-          return some(NoteFailure.unexpected(message: e.code));
+          return left(NoteFailure.unexpected(message: e.code));
       }
     }
   }
 
   @override
-  Future<Option<NoteFailure>> update(Note note) async {
+  Future<Either<NoteFailure, Unit>> update(Note note) async {
     try {
       final userDoc = await FirebaseFirestore.instance.userDocument();
       final noteDto = NoteDto.formDomain(note);
       await userDoc.noteCollection.doc(noteDto.id).update(noteDto.toJson());
-      return none();
+      return right(unit);
     } on FirebaseException catch (e) {
       switch (e.code) {
         case 'PERMISSION_DENIED':
-          return some(const NoteFailure.permissionDenied());
+          return left(const NoteFailure.permissionDenied());
         case 'NOT_FOUND':
-          return some(const NoteFailure.unableToUpdate());
+          return left(const NoteFailure.unableToUpdate());
         default:
-          return some(NoteFailure.unexpected(message: e.code));
+          return left(NoteFailure.unexpected(message: e.code));
       }
     }
   }
 
   @override
-  Future<Option<NoteFailure>> delete(Note note) async {
+  Future<Either<NoteFailure, Unit>> delete(Note note) async {
     try {
       final userDoc = await FirebaseFirestore.instance.userDocument();
       await userDoc.noteCollection.doc(note.id.getOrCrash()).delete();
-      return none();
+      return right(unit);
     } on FirebaseException catch (e) {
       switch (e.code) {
         case 'PERMISSION_DENIED':
-          return some(const NoteFailure.permissionDenied());
+          return left(const NoteFailure.permissionDenied());
         case 'NOT_FOUND':
-          return some(const NoteFailure.unableToUpdate());
+          return left(const NoteFailure.unableToUpdate());
         default:
-          return some(NoteFailure.unexpected(message: e.code));
+          return left(NoteFailure.unexpected(message: e.code));
       }
     }
   }

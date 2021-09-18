@@ -29,7 +29,7 @@ class NoteWatcherCubit extends Cubit<NoteWatcherState> {
     await _notesStreamSubscription?.cancel();
     _notesStreamSubscription = _noteRepository
         .watchAll()
-        .listen((failureOrNotes) => _receiveNotes(failureOrNotes));
+        .listen((failureOrNotes) => _receiveNotes(failureOrNotes, true));
   }
 
   Future<void> watchUncompleted() async {
@@ -37,16 +37,16 @@ class NoteWatcherCubit extends Cubit<NoteWatcherState> {
     await _notesStreamSubscription?.cancel();
     _notesStreamSubscription = _noteRepository
         .watchUncompleted()
-        .listen((failureOrNotes) => _receiveNotes(failureOrNotes));
+        .listen((failureOrNotes) => _receiveNotes(failureOrNotes, false));
   }
 
   void _receiveNotes(
-    Either<NoteFailure, KtList<Note>> failureOrNotes,
-  ) {
+      Either<NoteFailure, KtList<Note>> failureOrNotes, bool isWatchingAll) {
     emit(
       failureOrNotes.fold(
         (noteFailure) => NoteWatcherState.loadFailure(noteFailure),
-        (notes) => NoteWatcherState.loadSuccess(notes),
+        (notes) =>
+            NoteWatcherState.loadSuccess(notes, isWatchingAll: isWatchingAll),
       ),
     );
   }
