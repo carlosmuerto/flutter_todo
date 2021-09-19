@@ -1,10 +1,10 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:flutter_todo/application/notes/note_form/note_form_cubit.dart';
 import 'package:flutter_todo/presentation/routes/router.gr.dart';
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter_todo/tools/extension.dart';
 
 class ColorField extends StatelessWidget {

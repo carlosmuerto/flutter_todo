@@ -1,12 +1,13 @@
+import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_todo/domain/auth/auth_failure.dart';
-import 'package:dartz/dartz.dart';
 import 'package:flutter_todo/domain/auth/i_auth_facade.dart';
 import 'package:flutter_todo/domain/auth/user_data.dart';
 import 'package:flutter_todo/domain/auth/value_objects.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:injectable/injectable.dart';
+
 import 'firebase_user_mapper.dart';
 
 @LazySingleton(as: IAuthFacade)

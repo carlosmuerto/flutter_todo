@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_todo/application/notes/note_actor/note_actor_cubit.dart';
 import 'package:flutter_todo/domain/notes/note.dart';
+import 'package:flutter_todo/generated/l10n.dart';
 import 'package:flutter_todo/presentation/notes/note_form/primitives/todo_item_primitive.dart';
 import 'package:flutter_todo/presentation/routes/router.gr.dart';
 import 'package:kt_dart/collection.dart';
-import 'package:flutter_todo/generated/l10n.dart';
 
 class NoteCard extends StatelessWidget {
   final Note _note;
@@ -111,7 +111,7 @@ class TodoDisplay extends StatelessWidget {
               child: Icon(
                 Icons.check_box,
                 color: _noteColor.computeLuminance() > 0.5
-                    ? Theme.of(context).accentColor
+                    ? Theme.of(context).colorScheme.secondary
                     : Colors.white,
               ),
             )
@@ -121,7 +121,7 @@ class TodoDisplay extends StatelessWidget {
               child: Icon(
                 Icons.check_box_outline_blank,
                 color: _noteColor.computeLuminance() > 0.5
-                    ? Theme.of(context).accentColor
+                    ? Theme.of(context).colorScheme.secondary
                     : Colors.white,
               ),
             ),

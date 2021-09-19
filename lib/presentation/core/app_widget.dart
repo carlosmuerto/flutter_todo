@@ -29,16 +29,19 @@ class AppWidget extends StatelessWidget {
           S.delegate,
         ],
         theme: ThemeData.light().copyWith(
-            primaryColor: Colors.green[800],
-            accentColor: Colors.blueAccent,
-            floatingActionButtonTheme: FloatingActionButtonThemeData(
-              backgroundColor: Colors.blue[900],
+          floatingActionButtonTheme: FloatingActionButtonThemeData(
+            backgroundColor: Colors.blue[900],
+          ),
+          inputDecorationTheme: InputDecorationTheme(
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(8),
             ),
-            inputDecorationTheme: InputDecorationTheme(
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(8),
-              ),
-            )),
+          ),
+          colorScheme: ColorScheme.fromSwatch().copyWith(
+            primary: Colors.green[800],
+            secondary: Colors.blueAccent,
+          ),
+        ),
         supportedLocales: S.delegate.supportedLocales,
         routerDelegate: _appRouter.delegate(),
         routeInformationParser: _appRouter.defaultRouteParser(),

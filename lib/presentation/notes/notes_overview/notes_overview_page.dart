@@ -1,4 +1,5 @@
 import 'package:another_flushbar/flushbar_helper.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_todo/application/auth/auth_bloc.dart';
@@ -8,7 +9,6 @@ import 'package:flutter_todo/generated/l10n.dart';
 import 'package:flutter_todo/injection.dart';
 import 'package:flutter_todo/presentation/notes/notes_overview/widgets/umcompleted_switch.dart';
 import 'package:flutter_todo/presentation/routes/router.gr.dart';
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter_todo/tools/extension.dart';
 
 import 'widgets/notes_overview_body_widget.dart';
