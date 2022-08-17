@@ -33,6 +33,7 @@ class NotesOverviewPage extends StatelessWidget {
             listener: (context, state) => state.maybeMap(
               unAuthenticated: (e) {
                 context.router.replace(const SignInRoute());
+                return;
               },
               orElse: doNoting,
             ),

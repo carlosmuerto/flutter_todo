@@ -4,7 +4,6 @@ import 'package:flutter_todo/application/notes/note_form/note_form_cubit.dart';
 import 'package:flutter_todo/presentation/notes/note_form/primitives/todo_item_primitive.dart';
 import 'package:flutter_todo/tools/extension.dart';
 import 'package:kt_dart/collection.dart';
-import 'package:provider/provider.dart';
 
 class AddTodoTile extends StatelessWidget {
   const AddTodoTile({Key? key}) : super(key: key);
